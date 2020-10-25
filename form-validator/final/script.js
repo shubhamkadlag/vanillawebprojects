@@ -1,3 +1,4 @@
+'use strict';
 const form = document.getElementById('form');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
@@ -31,7 +32,7 @@ function checkEmail(input) {
 // Check required fields
 function checkRequired(inputArr) {
   let isRequired = false;
-  inputArr.forEach(function(input) {
+  inputArr.forEach(function (input) {
     if (input.value.trim() === '') {
       showError(input, `${getFieldName(input)} is required`);
       isRequired = true;
@@ -73,14 +74,13 @@ function getFieldName(input) {
 }
 
 // Event listeners
-form.addEventListener('submit', function(e) {
+form.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  if(!checkRequired([username, email, password, password2])){
+  if (!checkRequired([username, email, password, password2])) {
     checkLength(username, 3, 15);
     checkLength(password, 6, 25);
     checkEmail(email);
     checkPasswordsMatch(password, password2);
   }
-
 });
